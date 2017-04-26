@@ -1,0 +1,13 @@
+---
+# defaults for dns role - google and level 3
+resolvconf_nameservers:
+  - 8.8.8.8
+  - 8.8.4.4
+  - 209.244.0.3
+  - 209.244.0.4
+# To define a sortlist, add,
+# resolvconf_sortlist: "10.0.0.0/255.0.0.0"
+# To define options, add,
+# resolvconf_options: "single-request-reopen"
+# To define search-domain, add
+# resolvconf_search: "int.lan"

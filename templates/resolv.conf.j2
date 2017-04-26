@@ -1,0 +1,17 @@
+# {{ ansible_managed }}
+{% if resolvconf_domain is defined %}
+domain {{ resolvconf_domain }}
+{% endif %}
+{% if resolvconf_search is defined %}
+search {% for search_name in resolvconf_search %}{{ search_name }} {% endfor %}
+{% endif %}
+
+{% for nameserver in resolvconf_nameservers %}
+nameserver {{ nameserver }}
+{% endfor %}
+{% if resolvconf_sortlist is defined %}
+sortlist {{ resolvconf_sortlist }}
+{% endif %}
+{% if resolvconf_options is defined %}
+options {% for option_name in resolvconf_options %}{{ option_name }} {% endfor %}
+{% endif %}
