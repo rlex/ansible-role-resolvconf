@@ -1,11 +1,14 @@
 ---
-- name: Remove resolvconf on Debian systems
-  package:
+- name: Disable resolvconf symlink for debian systems
+  debconf:
     name: resolvconf
-    state: absent
-  when: ansible_os_family == 'Debian'
+    question: resolvconf/linkify-resolvconf
+    value: 'false'
+    vtype: select
+  when: ansible_os_family == 'Debian' and resolvconf_nameservers is defined
 
 - name: Install /etc/resolv.conf
   template:
     src: resolv.conf.j2
     dest: /etc/resolv.conf
+  when: resolvconf_nameservers is defined
