@@ -3,9 +3,8 @@
 domain {{ resolvconf_domain }}
 {% endif %}
 {% if resolvconf_search is defined %}
-search {% for search_name in resolvconf_search %}{{ search_name }} {% endfor %}
+search {{ resolvconf_search | join(' ') }}
 {% endif %}
-
 {% for nameserver in resolvconf_nameservers %}
 nameserver {{ nameserver }}
 {% endfor %}
@@ -13,5 +12,5 @@ nameserver {{ nameserver }}
 sortlist {{ resolvconf_sortlist }}
 {% endif %}
 {% if resolvconf_options is defined %}
-options {% for option_name in resolvconf_options %}{{ option_name }} {% endfor %}
+options {{ resolvconf_options | join(' ') }}
 {% endif %}
