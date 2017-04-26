@@ -1,6 +1,6 @@
-Simple role for configuring resolv.conf file  
-Please note that resolvconf package will be removed (on debian/ubuntu) to persist this settings after reboots.  
-By default, it will configure nameservers to Google DNS and Level3 DNS  
+Simple role for configuring resolv.conf file
+Please note that resolvconf will be disabled (on debian/ubuntu) to persist this settings after reboots.
+By default, it does nothing - you will need to define resolvconf_nameservers (at least)  
 
 Example playbook:
 ```yml
